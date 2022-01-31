@@ -1,0 +1,12 @@
+version: '3'
+services:
+  next-app:
+    build:
+      context: "./.docker"
+      dockerfile: "next.Dockerfile"
+    tty: true
+    volumes:
+      - ./workspace/next-app:/next-app
+    ports:
+      - "3000:3000"
+    user: ${UID_GID}
