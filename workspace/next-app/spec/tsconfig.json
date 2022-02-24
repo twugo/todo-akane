@@ -1,0 +1,10 @@
+// https://zenn.dev/garypippi/articles/c79cb002e001681a73cd
+{
+    "extends": "../tsconfig.json",
+    "include": [
+        "./**/*"
+    ],
+    "compilerOptions": {
+        "jsx": "react-jsx"
+    }
+}
