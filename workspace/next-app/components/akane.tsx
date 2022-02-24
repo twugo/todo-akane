@@ -1,28 +1,30 @@
-import type { NextPage } from 'next'
 import Image from 'next/image'
+import { useState } from 'react';
 
-const Akane: NextPage = () => {
+enum AkaneState {
+  Normal = 'Normal.png',
+  Smug = 'Smug.png',
+  Think = 'Think.png',
+  Victory = 'Victory.png',
+}
+
+const AkaneImage = () => {
+  const akaneImageDir = "/copyrighted/akane/"
+  let [currentAkaneImagePath, SetCurrentAkaneImagePath] = useState(akaneImageDir + AkaneState.Normal);
+
+  const SetAkaneImage = (state: AkaneState) => {
+    SetCurrentAkaneImagePath(akaneImageDir + state)
+  };
+
   return (
-    <>
-      <div className="flex flex-row-reverse h-screen mb-0">
-        <div className="flex flex-col-reverse">
-          <Image
-            src="/copyrighted/akane/Normal.png"
-            alt="akane"
-            width={480}
-            height={720}
-            objectFit="contain"
-          />
-        </div>
-        <div className="absolute bottom-10 w-11/12 h-40 p-4 
-                                font-mono font-medium text-2xl text-gray-800 dark:text-gray-200 
-                                border-4 border-slate-400 rounded-xl"
-        >
-          テキストが入ります。
-        </div>
-      </div>
-    </>
+    <Image
+      src={currentAkaneImagePath}
+      alt="akane"
+      width={480}
+      height={720}
+      objectFit="contain"
+    />
   )
 }
 
-export default Akane
+export default AkaneImage

@@ -1,10 +1,11 @@
 import type { NextPage } from 'next'
 import ToggleDarkModeButton from './ToggleDarkModeButton'
 
-const Header: NextPage = () => {
+const Header: NextPage = ({ children }) => {
   return (
     <>
       <header>
+        {children}
         <ToggleDarkModeButton />
       </header>
     </>
