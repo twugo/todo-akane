@@ -2,8 +2,12 @@
 [play voice "greeting1.wav"]
 やっほー、茜ちゃんやでー。
 
-初めまして、かな？
+[chara name="akane" state="Smug"]
+見ない顔やな。新入りか？
 よろしくなー。
 
-これは茜ちゃんが応援するアプリや。
+[chara name="akane" state="Normal"]
+これはテストや。
+
+// これは茜ちゃんが応援するアプリや。
 

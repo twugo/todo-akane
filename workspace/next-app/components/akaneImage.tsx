@@ -1,20 +1,14 @@
 import Image from 'next/image'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-enum AkaneState {
-  Normal = 'Normal.png',
-  Smug = 'Smug.png',
-  Think = 'Think.png',
-  Victory = 'Victory.png',
-}
-
-const AkaneImage = () => {
+const AkaneImage = ({ state = "Normal" }) => {
   const akaneImageDir = "/copyrighted/akane/"
-  let [currentAkaneImagePath, SetCurrentAkaneImagePath] = useState(akaneImageDir + AkaneState.Normal);
+  let [currentAkaneImagePath, SetCurrentAkaneImagePath] = useState(akaneImageDir + state + ".png");
 
-  const SetAkaneImage = (state: AkaneState) => {
-    SetCurrentAkaneImagePath(akaneImageDir + state)
-  };
+  useEffect(() => {
+    const path = akaneImageDir + state + ".png";
+    SetCurrentAkaneImagePath(path);
+  }, [state]);
 
   return (
     <Image
@@ -28,4 +22,3 @@ const AkaneImage = () => {
 }
 
 export default AkaneImage
-export { AkaneState }
