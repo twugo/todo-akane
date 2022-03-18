@@ -1,14 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-const ClickDetector = () => {
+const ClickDetector = ({ onClick = () => { } }) => {
   return (
     <div
-      onClick={() => {
-        const voice = new Audio('/copyrighted/akane/voice/greeting1.wav');
-        voice.play();
-        console.log('hoge');
+      onClick={(event) => {
+        event.preventDefault;
+        onClick();
       }}
-      className="z-10 absolute w-full h-full bg-red-900 opacity-50"
+      // className="z-10 absolute w-full h-full bg-red-900 opacity-50"
+      className="z-10 absolute w-full h-full"
     />
   )
 }

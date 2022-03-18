@@ -28,3 +28,4 @@ const AkaneImage = () => {
 }
 
 export default AkaneImage
+export { AkaneState }

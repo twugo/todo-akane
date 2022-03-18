@@ -1,9 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import ClickDetector from '../components/clickDetector'
-import AkaneImage from '../components/akane'
-import DialogueBox from '../components/dialogueBox'
+import AkaneManager from '../components/akaneManager'
 import Header from '../components/header'
 
 const Todo: NextPage = () => {
@@ -19,13 +17,7 @@ const Todo: NextPage = () => {
           <Header />
         </header>
         <main>
-          <ClickDetector />
-          <div className="flex flex-row-reverse h-screen mb-0">
-            <div className="flex flex-col-reverse">
-              <AkaneImage />
-            </div>
-            <DialogueBox text={"hoge"} />
-          </div>
+          <AkaneManager />
         </main>
       </div>
     </div>
