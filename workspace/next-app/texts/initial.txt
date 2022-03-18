@@ -1,0 +1,9 @@
+[chara name="akane" state="Normal"]
+[play voice "greeting1.wav"]
+やっほー、茜ちゃんやでー。
+
+初めまして、かな？
+よろしくなー。
+
+これは茜ちゃんが応援するアプリや。
+
