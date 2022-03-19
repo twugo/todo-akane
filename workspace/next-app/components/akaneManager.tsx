@@ -32,10 +32,14 @@ const AkaneManager = () => {
           const state = splittedText[2].split('"')[1];
           setCharaState(state);
         } else if (splittedText[0] == "[play") { // 音声再生
-          voice.pause();
+          if (voice) {
+            voice.pause();
+          }
           const path = "/copyrighted/akane/voice/" + splittedText[2].split('"')[1];
           setVoice(new Audio(path));
-          voice.play();
+          if (voice) {
+            voice.play();
+          }
         }
       } else if (texts[tmpTextCounter].startsWith("//")) { // コメントアウト
         break;
