@@ -1,4 +1,6 @@
 [chara name="akane" state="Normal"]
+■ Click or Tap to Start ■
+
 [play voice "greeting1.wav"]
 やっほー、茜ちゃんやでー。
 

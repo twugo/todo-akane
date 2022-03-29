@@ -48,8 +48,6 @@ const useNovel = () => {
     }
     SetTextCounter(tmpTextCounter + 1);
     SetShowingText(tmpText);
-
-    console.log("turn.");
   }
 
   return (
