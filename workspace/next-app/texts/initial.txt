@@ -7,7 +7,16 @@
 よろしくなー。
 
 [chara name="akane" state="Normal"]
-これはテストや。
+まだ開発中や。
+何もないで。
 
+[chara name="akane" state="Think"]
+技術選定間違えた感あるわ。
+Next.js の良さ全く生かせてへん気いするわ。
+
+テストも書けてないー、言うたら葵怒るやろうなあ……。
+そもそもフロントのテストってどう書けばええんかわからんねんな……
+
+[chara name="akane" state="Normal"]
 // これは茜ちゃんが応援するアプリや。
 

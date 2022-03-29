@@ -4,6 +4,7 @@ const ClickDetector = ({ onClick = () => { } }) => {
   return (
     <div
       onClick={(event) => {
+        console.log("clicked.");
         event.preventDefault;
         onClick();
       }}

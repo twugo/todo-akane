@@ -1,67 +1,33 @@
 import AkaneImage from './akaneImage';
 import DialogueBox from '../components/dialogueBox'
 import ClickDetector from '../components/clickDetector'
+import useNovel from '../hooks/useNovel';
+import { useFetch } from '../hooks/useFetch';
+import Menu from './Menu';
 
 import { useState, useEffect } from 'react';
 
 const AkaneManager = () => {
-  const [texts, setTexts] = useState<string[]>([]);
-  const [showingText, setShowingText] = useState(``);
-  const [textCounter, setTextCounter] = useState(0);
+  const { showingText, charaState, TurnPage, ChangeNovel } = useNovel();
+  const { data: homeData, loading: homeLoading, error: homeError } = useFetch('/api/akane/homeText');
 
-  // 参考：https://stackoverflow.com/questions/34757854/referenceerror-audio-is-not-defined
-  const [voice, setVoice] = useState(typeof Audio !== "undefined" && new Audio('/copyrighted/akane/voice/greeting1.wav'));
-  const [charaState, setCharaState] = useState("Normal");
 
   useEffect(() => {
-    fetch('/api/akaneText')
-      .then((res: any) => res.json())
-      .then((res) => {
-        setTexts(res.text);
-      });
-  }, []);
-
-  const onClick = () => {
-    let tmpText = "";
-    let tmpTextCounter = textCounter;
-
-    while (textCounter <= texts.length && texts[tmpTextCounter]) {
-      if (texts[tmpTextCounter][0] == '[') {
-        const splittedText = texts[tmpTextCounter].split(" ");
-        if (splittedText[0] == "[chara") { // 画像設定
-          const state = splittedText[2].split('"')[1];
-          setCharaState(state);
-        } else if (splittedText[0] == "[play") { // 音声再生
-          if (voice) {
-            voice.pause();
-          }
-          const path = "/copyrighted/akane/voice/" + splittedText[2].split('"')[1];
-          setVoice(new Audio(path));
-          if (voice) {
-            voice.play();
-          }
-        }
-      } else if (texts[tmpTextCounter].startsWith("//")) { // コメントアウト
-        break;
-      } else {
-        tmpText += (texts[tmpTextCounter] + `\n`);
-      }
-
-      tmpTextCounter++;
+    if (homeData) {
+      ChangeNovel(homeData.text);
     }
-    setTextCounter(tmpTextCounter + 1);
-    setShowingText(tmpText);
-  };
+  }, [homeData]);
 
   return (
     <>
-      <ClickDetector onClick={onClick} />
-      <div className="flex flex-row-reverse h-screen mb-0">
-        <div className="flex flex-col-reverse">
-          <AkaneImage state={charaState} />
-        </div>
-        <DialogueBox text={showingText} />
+      <div className="ml-16">
+        <Menu ChangeNovel={ChangeNovel} />
       </div>
+      <ClickDetector onClick={TurnPage} />
+      <div className='h-screen text-right my-0'>
+        <AkaneImage state={charaState} />
+      </div>
+      <DialogueBox text={showingText} />
     </>
   )
 }

@@ -1,0 +1,2 @@
+[chara name="akane" state="Normal"]
+やることあるんか？

@@ -17,6 +17,7 @@ const AkaneImage = ({ state = "Normal" }) => {
       width={480}
       height={720}
       objectFit="contain"
+      priority={true}
     />
   )
 }

@@ -1,0 +1,2 @@
+[chara name="akane" state="Smug"]
+茜ちゃんが応援したるでー！
