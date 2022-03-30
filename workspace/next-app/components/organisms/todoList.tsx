@@ -11,7 +11,14 @@ type Todo = {
 
 const TodoList = () => {
   // 参考：https://github.com/oreilly-japan/learning-react-2e-ja/blob/master/chapter-08/8.3/src/App.js
-  const loadJSON = (key: string) => key && JSON.parse(localStorage.getItem(key));
+  const loadJSON = (key: string) => {
+    if (key) {
+      const data = localStorage.getItem(key);
+      if (data) {
+        return JSON.parse(data);
+      }
+    }
+  };
   const saveJSON = (key: string, data: any) => localStorage.setItem(key, JSON.stringify(data));
 
   const todoKey = "todo-akane"

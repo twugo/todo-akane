@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import useMountedRef from "./useMountedRef";
 
 const useFetch = (uri: string) => {
-  const [data, setData] = useState();
-  const [error, setError] = useState();
+  const [data, setData] = useState<any>();
+  const [error, setError] = useState<any>();
   const [loading, setLoading] = useState(true);
 
   const mounted = useMountedRef();
