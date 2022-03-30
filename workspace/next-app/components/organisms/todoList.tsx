@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 type Todo = {
   id: number,
   task: string
+  isFinished: boolean
 }
 
 const TodoList = () => {
@@ -36,12 +37,19 @@ const TodoList = () => {
 
   const addTask = () => {
     if (taskCandidate) {
-      const newTaskList = taskList.concat();
-      newTaskList.push({ id: maxTaskId + 1, task: taskCandidate })
+      let newTaskList = taskList.concat();
+      newTaskList.push({ id: maxTaskId + 1, task: taskCandidate, isFinished: false })
       SetTaskList(newTaskList)
       SetTaskCandidate("");
       SetMaxTaskId(maxTaskId + 1);
     }
+  }
+
+  const changeIsFinished = (id: number, newIsFinished: boolean) => {
+    let newTaskList = taskList.concat();
+    const index = newTaskList.findIndex(task => task.id == id);
+    newTaskList[index] = { ...newTaskList[index], isFinished: newIsFinished };
+    SetTaskList(newTaskList);
   }
 
   return (
@@ -60,8 +68,14 @@ const TodoList = () => {
         // 参考：https://flowbite.com/docs/components/forms/
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
       />
-      {taskList && taskList.map(({ task, id }) => (
-        <TodoListItem task={task} key={id.toString()} />
+      {taskList && taskList.map(({ task, id, isFinished }) => (
+        <TodoListItem
+          id={id}
+          task={task}
+          wasChecked={isFinished}
+          onCheck={changeIsFinished}
+          key={id.toString()}
+        />
       ))}
     </ListContainer>
   )
