@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Button from "../uiParts/button";
 
 type Props = {
   id: number
@@ -6,9 +7,10 @@ type Props = {
   wasChecked?: boolean
   onCheck?: (id: number, newIsFinished: boolean) => void
   onChangeTask?: (id: number, newTask: string) => void
+  onClickDeleteButton: (id: number) => void
 }
 
-const TodoListItem = ({ id, task, wasChecked = false, onCheck, onChangeTask }: Props) => {
+const TodoListItem = ({ id, task, wasChecked = false, onCheck, onChangeTask, onClickDeleteButton }: Props) => {
   const [isChecked, setIsChecked] = useState(wasChecked);
 
   useEffect(() => {
@@ -27,8 +29,8 @@ const TodoListItem = ({ id, task, wasChecked = false, onCheck, onChangeTask }: P
         type="text"
         className={
           isChecked
-            ? "line-through bg-transparent text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            : "bg-transparent text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            ? "line-through bg-transparent m-2 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            : "bg-transparent m-2 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         }
         defaultValue={task}
         onChange={(event?: any) => {
@@ -36,6 +38,7 @@ const TodoListItem = ({ id, task, wasChecked = false, onCheck, onChangeTask }: P
         }}
         required
       />
+      <Button onClick={() => { onClickDeleteButton(id) }}>x</Button>
     </div>
   )
 }

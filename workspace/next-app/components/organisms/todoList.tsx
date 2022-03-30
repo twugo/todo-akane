@@ -45,6 +45,11 @@ const TodoList = () => {
     }
   }
 
+  const deleteTask = (id: number) => {
+    let newTaskList = taskList.filter((todo) => todo.id != id);
+    SetTaskList(newTaskList);
+  }
+
   const changeTask = (id: number, newTask: string) => {
     let newTaskList = taskList.concat();
     const index = newTaskList.findIndex(task => task.id == id);
@@ -82,7 +87,8 @@ const TodoList = () => {
           wasChecked={isFinished}
           onCheck={changeIsFinished}
           onChangeTask={changeTask}
-          key={id.toString()}
+          onClickDeleteButton={deleteTask}
+          key={id}
         />
       ))}
     </ListContainer>
