@@ -45,6 +45,13 @@ const TodoList = () => {
     }
   }
 
+  const changeTask = (id: number, newTask: string) => {
+    let newTaskList = taskList.concat();
+    const index = newTaskList.findIndex(task => task.id == id);
+    newTaskList[index] = { ...newTaskList[index], task: newTask };
+    SetTaskList(newTaskList);
+  }
+
   const changeIsFinished = (id: number, newIsFinished: boolean) => {
     let newTaskList = taskList.concat();
     const index = newTaskList.findIndex(task => task.id == id);
@@ -74,6 +81,7 @@ const TodoList = () => {
           task={task}
           wasChecked={isFinished}
           onCheck={changeIsFinished}
+          onChangeTask={changeTask}
           key={id.toString()}
         />
       ))}
