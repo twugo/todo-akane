@@ -33,7 +33,7 @@ const TodoList = () => {
       SetTaskList(loadedTaskList)
 
       const maxId = Math.max(...loadedTaskList.map((todo: Todo) => todo.id));
-      SetMaxTaskId(maxId);
+      SetMaxTaskId(Math.max(maxId, 0)); // idが-Infinityになるバグを回避
     };
   }, []);
 
