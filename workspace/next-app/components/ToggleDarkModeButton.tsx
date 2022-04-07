@@ -19,10 +19,7 @@ const ToggleDarkModeButton = () => {
       document.documentElement.classList.remove('dark')
       SetIsDark(false);
     } else {
-      // https://tailwindcss.com/docs/dark-mode
-      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark')
-      }
+      document.documentElement.classList.add('dark')
       SetIsDark(true);
     }
   };
