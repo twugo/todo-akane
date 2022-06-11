@@ -1,5 +1,5 @@
-import ListContainer from "../uiParts/listContainer"
-import Button from "../uiParts/button"
+import ListContainer from "../../../uiParts/listContainer"
+import Button from "../../../uiParts/button"
 import TodoListItem from "./todoListItem";
 import { useEffect, useState } from "react";
 

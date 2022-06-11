@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import AkaneManager from '../components/akaneManager'
+import AkaneManager from '../components/pages/todo/characters/Akane/akaneManager'
 import Header from '../components/header'
 
 const Todo: NextPage = () => {

@@ -1,9 +1,9 @@
 import AkaneImage from './akaneImage';
-import DialogueBox from '../components/dialogueBox'
-import ClickDetector from '../components/clickDetector'
-import useNovel from '../hooks/useNovel';
-import { useFetch } from '../hooks/useFetch';
-import Menu from './Menu';
+import DialogueBox from '../../dialogueBox'
+import ClickDetector from '../../clickDetector'
+import useNovel from '../../../../../hooks/useNovel';
+import { useFetch } from '../../../../../hooks/useFetch';
+import Menu from '../../Menu';
 
 import { useState, useEffect } from 'react';
 

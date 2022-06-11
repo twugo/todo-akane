@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Button from "../uiParts/button";
+import Button from "../../../uiParts/button";
 
 type Props = {
   id: number

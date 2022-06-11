@@ -1,4 +1,4 @@
-import Button from "../uiParts/button"
+import Button from "../../../uiParts/button"
 
 const CheerModeButton = ({ onClick = (event?: any) => { } }) => {
 

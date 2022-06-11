@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useFetch } from "../hooks/useFetch";
-import TodoModeButton from "./organisms/todoModeButton";
-import CheerModeButton from "./organisms/cheerModeButton";
-import TodoList from "./organisms/todoList";
-import CheerButtonList from "./organisms/cheerButtonList";
+import { useFetch } from "../../../hooks/useFetch";
+import TodoModeButton from "./modes/todoModeButton";
+import CheerModeButton from "./modes/cheerModeButton";
+import TodoList from "./modes/todoList";
+import CheerButtonList from "./modes/cheerButtonList";
 
 enum Scene {
   Home,
