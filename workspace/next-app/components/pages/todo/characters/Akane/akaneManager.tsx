@@ -1,7 +1,7 @@
 import AkaneImage from './akaneImage';
 import DialogueBox from '../../dialogueBox'
 import ClickDetector from '../../clickDetector'
-import useNovel from '../../../../../hooks/useNovel';
+import useNovel, { NovelProvider } from '../../../../../hooks/useNovel';
 import { useFetch } from '../../../../../hooks/useFetch';
 import Menu from '../../Menu';
 

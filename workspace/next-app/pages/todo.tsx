@@ -3,6 +3,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import AkaneManager from '../components/pages/todo/characters/Akane/akaneManager'
 import Header from '../components/header'
+import { NovelProvider } from '../hooks/useNovel'
 
 const Todo: NextPage = () => {
   return (
@@ -17,7 +18,9 @@ const Todo: NextPage = () => {
         <Header />
       </header>
       <main>
-        <AkaneManager />
+        <NovelProvider>
+          <AkaneManager />
+        </NovelProvider>
       </main>
     </div>
     // </div>

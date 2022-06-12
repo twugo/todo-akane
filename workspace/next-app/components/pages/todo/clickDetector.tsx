@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const ClickDetector = ({ onClick = () => { } }) => {
+const ClickDetector = ({ onClick = (..._: any) => { } }) => {
   return (
     <div
       onClick={(event) => {

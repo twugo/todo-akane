@@ -1,7 +1,27 @@
-import { useState, useEffect } from 'react';
-import Fetch from '../components/atoms/Fetch';
+import { useState, useContext, createContext, ReactNode } from 'react';
 
-const useNovel = () => {
+type Context = {
+  showingText: string,
+  charaState: string,
+  TurnPage: (currentNovel: string[], currentTextCounter: number) => void,
+  ChangeNovel: (newNovel: string[]) => void
+};
+
+const initialContext: Context = {
+  showingText: "",
+  charaState: "Normal",
+  TurnPage: () => { },
+  ChangeNovel: () => { }
+};
+
+const NovelContext = createContext<Context>(initialContext);
+export const useNovel = () => useContext(NovelContext);
+
+type Props = {
+  children: ReactNode
+};
+
+export const NovelProvider = ({ children }: Props) => {
   const [novel, SetNovel] = useState<string[]>([]);
   const [showingText, SetShowingText] = useState(``);
   const [textCounter, SetTextCounter] = useState(0);
@@ -51,7 +71,11 @@ const useNovel = () => {
   }
 
   return (
-    { showingText, charaState, TurnPage, ChangeNovel }
+    <NovelContext.Provider
+      value={{ showingText, charaState, TurnPage, ChangeNovel }}
+    >
+      {children}
+    </NovelContext.Provider>
   );
 }
 
